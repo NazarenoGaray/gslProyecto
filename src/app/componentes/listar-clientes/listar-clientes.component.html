@@ -1,0 +1,80 @@
+<app-nav-bar></app-nav-bar>
+<div class="card container-fluid" id="content-lista">
+  <div class="container">
+    <div class="card-header">
+      <label class="h2" for=""> Lista de usuarios</label>
+    </div>
+    <div class="table-responsive ">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.id_cliente }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>
+              <a [routerLink]="['/editar-clientes', cliente.id_cliente]" class="btn btn-sm btn-primary mr-2">Editar</a>
+              <button (click)="eliminarCliente(cliente.id_cliente)" class="btn btn-sm btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-pie-pag></app-pie-pag>
+
+<ul class="list-group list-group-light">
+  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let cliente of clientes">
+    <div class="d-flex align-items-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/HSBC.svg/2560px-HSBC.svg.png" alt="" style="width: 45px; height: 45px"
+        class="rounded-circle" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">{{ cliente.nombre }}</p>
+      </div>
+    </div>
+  </li>
+
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+
+      <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+        class="rounded-circle" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">John Doe</p>
+        <p class="text-muted mb-0">john.doe@gmail.com</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-success">Active</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
+        style="width: 45px; height: 45px" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">Alex Ray</p>
+        <p class="text-muted mb-0">alex.ray@gmail.com</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-primary">Onboarding</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
+        style="width: 45px; height: 45px" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">Kate Hunington</p>
+        <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-warning">Awaiting</span>
+  </li>
+</ul>
