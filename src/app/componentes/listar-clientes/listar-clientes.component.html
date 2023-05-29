@@ -18,11 +18,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let cliente of clientes">
-            <td>{{ cliente.id_cliente }}</td>
+            <td>{{ cliente.cliente_id }}</td>
             <td>{{ cliente.nombre }}</td>
             <td>
-              <a [routerLink]="['/editar-clientes', cliente.id_cliente]" class="btn btn-sm btn-primary mr-2">Editar</a>
-              <button (click)="eliminarCliente(cliente.id_cliente)" class="btn btn-sm btn-danger">Eliminar</button>
+              <a [routerLink]="['/cliente', cliente.cliente_id]" class="btn btn-sm btn-primary mr-2">Editar</a>
+              <button (click)="eliminarCliente(cliente.cliente_id)" class="btn btn-sm btn-danger">Eliminar</button>
             </td>
           </tr>
         </tbody>
@@ -38,7 +38,7 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/HSBC.svg/2560px-HSBC.svg.png" alt="" style="width: 45px; height: 45px"
         class="rounded-circle" />
       <div class="ms-3">
-        <p class="fw-bold mb-1">{{ cliente.nombre }}</p>
+        <p class="fw-bold mb-1">{{ cliente?.nombre }}</p>
       </div>
     </div>
   </li>

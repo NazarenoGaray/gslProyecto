@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { Cliente } from './cliente.module';
+
 import { tap, switchMap, map, take, catchError } from 'rxjs/operators';
+import { Cliente } from 'src/app/model/cliente.model';
 
 /* el archivo cliente.service.ts sería el controlador 
 que se encarga de manejar la lógica de negocio de la aplicación y comunicarse con la API.
@@ -11,9 +12,9 @@ que se encarga de manejar la lógica de negocio de la aplicación y comunicarse 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class ClientesService {
   // URL de la API CLIENTE
-  apiURL = 'http://localhost/GaryStorageLogistic/apiCliente.php';
+  apiURL = 'http://localhost/GaryStorageLogistic/ApiClientes.php';
   // Lista de cliente
   cliente = [];
   // Cliente seleccionado (si lo hay)
@@ -29,15 +30,15 @@ export class ClienteService {
     return this.http.get(this.apiURL).pipe(
       map((data: any) => {
         return data.map((cliente: any) => new Cliente(
-          cliente.id_cliente,
+          cliente.cliente_id,
           cliente.nombre,
         ));
       })
     );
   }
   // Función para obtener un cliente por su ID
-  obtenerClientePorId(id_cliente: number) {
-    return this.http.get(`${this.apiURL}?id_cliente=${id_cliente}`).pipe(
+  getClientePorId(cliente_id: number) {
+    return this.http.get(`${this.apiURL}?cliente_id=${cliente_id}`).pipe(
       take(1),
       tap((data: any) => {
         this.clienteSeleccionado = data;

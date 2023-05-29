@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms'; // Importar el módulo de formularios reactivos
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importar el módulo de formularios reactivos
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,12 @@ import { Error404Component } from './componentes/error404/error404.component';
 import { AltaClienteComponent } from './componentes/alta-cliente/alta-cliente.component';
 import { ModifClienteComponent } from './componentes/modif-cliente/modif-cliente.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { AltaUsuariosComponent } from './componentes/alta-usuarios/alta-usuarios.component';
+import { ListarUsuariosComponent } from './componentes/listar-usuarios/listar-usuarios.component';
+import { ModifUsuariosComponent } from './componentes/modif-usuarios/modif-usuarios.component';
+import { SesionComponent } from './componentes/sesion/sesion.component';
+import { ClienteComponent } from './componentes/cliente/cliente.component';
+
 
 
 @NgModule({
@@ -23,13 +29,19 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
     Error404Component,
     AltaClienteComponent,
     ModifClienteComponent,
-    InicioComponent
+    InicioComponent,
+    AltaUsuariosComponent,
+    ListarUsuariosComponent,
+    ModifUsuariosComponent,
+    SesionComponent,
+    ClienteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

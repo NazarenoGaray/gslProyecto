@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/servicios/cliente/cliente.module';
-import { ClienteService } from 'src/app/servicios/cliente/cliente.service';
+import { Cliente } from 'src/app/model/cliente.model';
+
+import { ClientesService } from 'src/app/servicios/clientes/clientes.service';
 
 @Component({
   selector: 'app-alta-cliente',
@@ -12,11 +13,11 @@ import { ClienteService } from 'src/app/servicios/cliente/cliente.service';
 export class AltaClienteComponent {
 
   clienteForm!: FormGroup;
-  cliente!: Cliente;
+  cliente: Cliente[]=[];
 
 
   constructor(private formBuilder: FormBuilder,
-    private clienteService: ClienteService,
+    private clientesService: ClientesService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class AltaClienteComponent {
   agregarCliente() {
     const clienteFormulario = this.clienteForm.value;
 
-    this.clienteService.crearCliente(clienteFormulario).subscribe(
+    this.clientesService.crearCliente(clienteFormulario).subscribe(
       (res: any) => {
         console.log(`Cliente creado con ID ${res.id_cliente}`);
         this.router.navigate(['/listar-clientes']);
