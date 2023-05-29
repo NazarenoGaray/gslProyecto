@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/model/cliente.model';
-import { ClientesService } from 'src/app/servicios/clientes/clientes.service';
-
+import { TokenService } from 'src/app/servicios/token/token.service';
 
 
 @Component({
@@ -10,21 +8,18 @@ import { ClientesService } from 'src/app/servicios/clientes/clientes.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent  implements OnInit{
-  
-  clientes: Cliente[] = [];
-  
+export class NavBarComponent {
   constructor(
-    private clientesService: ClientesService,
-    private router: Router
-  ){}
-   
-  ngOnInit(): void {
-    this.obtenerClientes();
+    private router: Router,
+    private tokenService: TokenService
+  ) {}
+
+  isLoggedIn(): boolean {
+    return this.tokenService.hasToken(); // Implementa el método hasToken() en tu servicio de tokens para verificar si hay un token almacenado.
   }
-  obtenerClientes() {
-    this.clientesService.obtenerClientes().subscribe((clientes: Cliente[]) => {
-      this.clientes = clientes;
-    });
+
+  cerrarSesion(): void {
+    this.tokenService.removeToken(); // Implementa el método removeToken() en tu servicio de tokens para eliminar el token del sessionStorage.
+    this.router.navigate(['/']); // Redirige al componente de inicio de sesión después de cerrar sesión.
   }
 }

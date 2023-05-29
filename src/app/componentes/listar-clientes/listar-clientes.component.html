@@ -10,9 +10,7 @@
           <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Apellido</th>
             <th>Email</th>
-            <th>Rol</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -20,8 +18,9 @@
           <tr *ngFor="let cliente of clientes">
             <td>{{ cliente.cliente_id }}</td>
             <td>{{ cliente.nombre }}</td>
+            <td>MAIL null</td>
             <td>
-              <a [routerLink]="['/cliente', cliente.cliente_id]" class="btn btn-sm btn-primary mr-2">Editar</a>
+              <a [routerLink]="['/cliente', cliente.cliente_id]" class="btn btn-sm btn-primary mr-2">Editar</a> 
               <button (click)="eliminarCliente(cliente.cliente_id)" class="btn btn-sm btn-danger">Eliminar</button>
             </td>
           </tr>

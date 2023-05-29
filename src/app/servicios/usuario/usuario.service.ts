@@ -62,7 +62,7 @@ crearUsuario(usuario: Usuario) {
   return this.http.post(this.apiURL, usuario).pipe(
     tap((data: any) => console.log(`Usuario creado con ID ${data.id_usuario}`)),
     catchError(err => {
-      console.log(`Error al crear usuario: ${err.message}`);
+      console.log(`Err4or al crear usuario: ${err.message}`);
       return throwError(err);
     })
   );

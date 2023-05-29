@@ -6,7 +6,7 @@ import { catchError, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class SesionService {
-  apiUrl = 'http://localhost/GaryStorageLogistic/ApiSesipn.php';
+  apiUrl = 'http://localhost/GaryStorageLogistic/ApiSesion.php';
 
   constructor(private http: HttpClient) { }
 

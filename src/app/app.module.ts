@@ -17,6 +17,7 @@ import { ListarUsuariosComponent } from './componentes/listar-usuarios/listar-us
 import { ModifUsuariosComponent } from './componentes/modif-usuarios/modif-usuarios.component';
 import { SesionComponent } from './componentes/sesion/sesion.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
+import { ContactoComponent } from './componentes/contacto/contacto.component';
 
 
 
@@ -35,6 +36,7 @@ import { ClienteComponent } from './componentes/cliente/cliente.component';
     ModifUsuariosComponent,
     SesionComponent,
     ClienteComponent,
+    ContactoComponent,
   ],
   imports: [
     BrowserModule,

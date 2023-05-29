@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<div class="card container-fluid">
+<div class="card container-fluid padding">
   <div class="card-header lg-center">
     <label class="h2" for="">Agregar Usuario</label>
   </div>
@@ -24,11 +24,6 @@
         <label for="correo">Correo </label>
       </div>
       <div class="form-floating mb-3 col-12 col-sm-12 col-md-6 col-lg-3 col-xl-6">
-        <input required type="text" class="form-control" id="direccion" formControlName="direccion" placeholder=" ">
-        <label for="direccion">Dirección </label>
-      </div>
-
-      <div class="form-floating mb-3 col-12 col-sm-12 col-md-6 col-lg-3 col-xl-6">
         <input required type="text" class="form-control" id="nombreusuario" formControlName="usuario"
           placeholder="m.lopez">
         <label for="nombreusuario">Usuario: </label>
@@ -40,7 +35,7 @@
       </div>
       <div class="form-floating mb-3 col-12 col-sm-12 col-md-6 col-lg-3 col-xl-6">
         <select required class="form-control" id="floatingSelectRol" aria-label="Floating label select example"
-          formControlName="id_rol">
+          formControlName="id_rol" placeholder=" ">
           <option value="">Seleccionar rol</option>
           <option *ngFor="let rol of roles" [value]="rol.id_rol">{{ rol.rol }}</option>
         </select>
