@@ -4,6 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TokenService {
+  verSesionUsuario(id_usuario: number) {
+    
+    return true;
+  }
   private readonly TOKEN_KEY = 'TOKEN';
 
   getToken(): string | null {

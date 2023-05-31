@@ -13,7 +13,9 @@
         </div>
 
         <div>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5 me-2" routerLink="/sesion">Iniciar Sesion </button>
+          <ng-container *ngIf="!isLoggedIn()">
+            <button class="btn btn-primary px-4 py-2 fs-5 mt-5 me-2" routerLink="/">Iniciar Sesion </button>
+          </ng-container>
           <button class="btn btn-light px-4 py-2 fs-5 mt-5 ms-2" routerLink="/contacto">Contactanos </button>
         </div>
       </div>
@@ -30,7 +32,9 @@
         </div>
 
         <div>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5 me-2" routerLink="/sesion">Iniciar Sesion </button>
+          <ng-container *ngIf="!isLoggedIn()">
+            <button class="btn btn-primary px-4 py-2 fs-5 mt-5 me-2" routerLink="/">Iniciar Sesion </button>
+          </ng-container>
           <button class="btn btn-light px-4 py-2 fs-5 mt-5 ms-2" routerLink="/contacto">Contactanos </button>
         </div>
       </div>
@@ -47,7 +51,9 @@
           <h1 class="text-uppercase fw-semibold display-3">Bienvenidos a GSL S.A.</h1>
         </div>
         <div>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5 me-2" routerLink="/sesion">Iniciar Sesion </button>
+          <ng-container *ngIf="!isLoggedIn()">
+            <button class="btn btn-primary px-4 py-2 fs-5 mt-5 me-2" routerLink="/">Iniciar Sesion </button>
+          </ng-container>
           <button class="btn btn-light px-4 py-2 fs-5 mt-5 ms-2" routerLink="/contacto">Contactanos </button>
         </div>
 

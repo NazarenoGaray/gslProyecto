@@ -14,7 +14,7 @@ que se encarga de manejar la lógica de negocio de la aplicación y comunicarse 
 })
 export class ClientesService {
   // URL de la API CLIENTE
-  apiURL = 'http://localhost/GaryStorageLogistic/ApiClientes.php';
+  apiURL = 'http://localhost/GaryStorageLogistic/Clientes.php';
   // Lista de cliente
   cliente = [];
   // Cliente seleccionado (si lo hay)
@@ -30,15 +30,15 @@ export class ClientesService {
     return this.http.get(this.apiURL).pipe(
       map((data: any) => {
         return data.map((cliente: any) => new Cliente(
-          cliente.cliente_id,
+          cliente.id_cliente,
           cliente.nombre,
         ));
       })
     );
   }
   // Función para obtener un cliente por su ID
-  getClientePorId(cliente_id: number) {
-    return this.http.get(`${this.apiURL}?cliente_id=${cliente_id}`).pipe(
+  getClientePorId(id_cliente: number) {
+    return this.http.get(`${this.apiURL}?id_cliente=${id_cliente}`).pipe(
       take(1),
       tap((data: any) => {
         this.clienteSeleccionado = data;

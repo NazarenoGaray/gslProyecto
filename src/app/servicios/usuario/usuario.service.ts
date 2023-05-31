@@ -8,7 +8,7 @@ import { Usuario } from 'src/app/model/usuario.model';
 })
 export class UsuarioService {
 // URL de la API
-apiURL = 'http://localhost/GaryStorageLogistic/ApiUsuarios.php';
+apiURL = 'http://localhost/GaryStorageLogistic/Usuarios.php';
 
 // Lista de usuarios
 usuarios = [];

@@ -22,4 +22,6 @@ export class NavBarComponent {
     this.tokenService.removeToken(); // Implementa el método removeToken() en tu servicio de tokens para eliminar el token del sessionStorage.
     this.router.navigate(['/']); // Redirige al componente de inicio de sesión después de cerrar sesión.
   }
+
+  
 }

@@ -7,7 +7,7 @@ import { Rol } from 'src/app/model/rol.model';
   providedIn: 'root'
 })
 export class RolService {
-  apiURL = 'http://localhost/GaryStorageLogistic/ApiRoles.php';
+  apiURL = 'http://localhost/GaryStorageLogistic/Roles.php';
 
   constructor(private http: HttpClient) { }
 

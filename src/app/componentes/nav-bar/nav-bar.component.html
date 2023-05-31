@@ -6,30 +6,45 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ng-container *ngIf="isLoggedIn()">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuarios
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/listar-usuarios">Listar Usuarios</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" routerLink="/alta-usuario">Alta Usuarios</a></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuarios
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/listar-usuarios">Listar Usuarios</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/alta-usuario">Alta Usuarios</a></li>
+              <li><hr class="dropdown-divider"></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Clientes
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/listar-clientes">Listar clientes</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/alta-cliente">Alta clientes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Pedidos</a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="!isLoggedIn()">
+          <li class="nav-item ">
+            <a class="nav-link  px-4 "  routerLink="/nosotros" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Nosotros
+            </a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Clientes
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/listar-clientes">Listar clientes</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" routerLink="/alta-cliente">Alta clientes</a></li>
-          </ul>
+        <li class="nav-item  ">
+            <a class="nav-link  px-4 "  routerLink="/contacto" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contacto
+            </a>
+    
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pedidos</a>
-        </li>
+        </ng-container>
       </ul>
       <form class="d-flex" role="search">
         <ng-container *ngIf="!isLoggedIn()">
