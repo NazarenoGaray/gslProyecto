@@ -73,17 +73,14 @@ export class ListarUsuariosComponent {
     return estado ? estado.estado : '';
   }
 
-  eliminarUsuario(id_usuario: number) {
-    if (this.tokenService.verSesionUsuario(id_usuario)) {
-      console.log(`Eliminar usuario con ID ${id_usuario}`);
-      if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
-        this.usuarioService.eliminarUsuario(id_usuario).subscribe(() => {
-          console.log(`Usuario con ID ${id_usuario} eliminado`);
-          this.obtenerUsuarios();
-        });
-      }
-    }else{
-      console.log(`No puedes borrar un usuaio que esta logueado usuario`);
-    }
+  detallesUsuario(id_usuario: number) {
+    this.router.navigate(['/detalle-usuario',id_usuario]);
+    // console.log(`Eliminar usuario con ID ${id_usuario}`);
+    // if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
+    //   this.usuarioService.eliminarUsuario(id_usuario).subscribe(() => {
+    //     console.log(`Usuario con ID ${id_usuario} eliminado`);
+    //     this.obtenerUsuarios();
+    //   });
+    // }
   }
 }

@@ -12,6 +12,7 @@ import { AltaUsuariosComponent } from './componentes/alta-usuarios/alta-usuarios
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { TokenGuard } from './guard/token.guard';
 import { ModifUsuariosComponent } from './componentes/modif-usuarios/modif-usuarios.component';
+import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'sesion',component: SesionComponent},
   { path: 'contacto',component: ContactoComponent},
   { path: 'listar-usuarios',component: ListarUsuariosComponent, canActivate:[TokenGuard]},
+  { path: 'detalle-usuario/:id',component: DetalleUsuarioComponent, canActivate:[TokenGuard]},
   { path: 'alta-usuario',component: AltaUsuariosComponent, canActivate:[TokenGuard]},
   { path: 'modificar-usuario/:id',component: ModifUsuariosComponent, canActivate:[TokenGuard]},
   { path: 'alta-cliente',component: AltaClienteComponent, canActivate:[TokenGuard]},

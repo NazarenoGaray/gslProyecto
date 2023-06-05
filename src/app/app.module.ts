@@ -19,6 +19,7 @@ import { SesionComponent } from './componentes/sesion/sesion.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { NosotrosComponent } from './componentes/nosotros/nosotros.component';
+import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
 
 
 
@@ -39,6 +40,7 @@ import { NosotrosComponent } from './componentes/nosotros/nosotros.component';
     ClienteComponent,
     ContactoComponent,
     NosotrosComponent,
+    DetalleUsuarioComponent,
   ],
   imports: [
     BrowserModule,
