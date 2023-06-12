@@ -35,18 +35,18 @@
       </div>
       <div class="form-floating mb-3 col-2">
         <select required class="form-select" id="floatingSelect" aria-label="Floating label select example"
-          formControlName="id_rol">
+          formControlName="idRol">
           <option value="">Seleccionar rol</option>
-          <option *ngFor="let rol of roles" [value]="rol.id_rol">{{ rol.rol }}</option>
+          <option *ngFor="let rol of roles" [value]="rol.idRol">{{ rol.rol }}</option>
         </select>
         <label for="floatingSelect">Rol</label>
       </div>
 
       <div class="form-floating mb-3 col-2">
         <select required class="form-select" id="floatingSelectEstados" aria-label="Floating label select example"
-          formControlName="id_estado_usuario">
+          formControlName="idEstadoUsuario">
           <option value="">Seleccione estado</option>
-          <option *ngFor="let estado of estados" [value]="estado.id_estado_usuario">{{ estado.estado }}</option>
+          <option *ngFor="let estado of estados" [value]="estado.idEstadoUsuario">{{ estado.estado }}</option>
         </select>
         <label for="floatingSelectEstados">Estado</label>
       </div>

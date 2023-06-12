@@ -7,7 +7,7 @@ import { Rol } from 'src/app/model/rol.model';
   providedIn: 'root'
 })
 export class RolService {
-  apiURL = 'http://localhost/GaryStorageLogistic/Roles.php';
+  apiURL = 'http://localhost/GSLogistic/Roles.php';
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class RolService {
     return this.http.post<Rol>(this.apiURL, rol);
   }
   actualizarRol(rol: Rol): Observable<any> {
-    const url = `${this.apiURL}/${rol.id_rol}`;
+    const url = `${this.apiURL}/${rol.idRol}`;
     return this.http.put(url, rol);
   }
   eliminarRol(id: number): Observable<any> {
@@ -32,8 +32,8 @@ export class RolService {
     return this.http.delete(url);
   }
 
-  obtenerNombreRol(id_rol: number): Observable<string> {
-    return this.obtenerRolPorId(id_rol).pipe(
+  obtenerNombreRol(idRol: number): Observable<string> {
+    return this.obtenerRolPorId(idRol).pipe(
       map((rol: Rol) => rol.rol)
     );
   }

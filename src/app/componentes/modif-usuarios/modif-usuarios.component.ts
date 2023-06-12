@@ -18,7 +18,7 @@ export class ModifUsuariosComponent {
 
   usuarioForm!: FormGroup;
   usuario!: Usuario;
-  id_usuario!: number;
+  idUsuario!: number;
   roles: Rol[] = [];
   estados: EstadoUsuaro[] = [];
   paises: any[] = [];
@@ -43,8 +43,8 @@ export class ModifUsuariosComponent {
       correo: ['', [Validators.required, Validators.email, this.validateCorreo]],
       usuario: ['', Validators.required],
       contrasena: ['', Validators.required],
-      id_rol: ['', Validators.required],
-      id_estado_usuario: ['', Validators.required]
+      idRol: ['', Validators.required],
+      idEstadoUsuario: ['', Validators.required]
     });
     // Obtenemos los roles para cargarlos en el select
     this.rolService.obtenerRoles().subscribe(
@@ -73,7 +73,7 @@ export class ModifUsuariosComponent {
         if (usuario) {
           console.log("Data obtenida: ", usuario);
           this.usuarioForm.patchValue(usuario);
-          this.id_usuario = usuario.id_usuario;
+          this.idUsuario = usuario.idUsuario;
           this.usuario = usuario;
         } else {
           console.log("Usuario no encontrado");
@@ -95,11 +95,11 @@ export class ModifUsuariosComponent {
     const usuarioFormulario = this.usuarioForm.value;
     this.usuario = {
       ...usuarioFormulario,
-      id_usuario: this.id_usuario
+      idUsuario: this.idUsuario
     };
-    this.usuarioService.actualizarUsuario(this.id_usuario, this.usuario).subscribe(
+    this.usuarioService.actualizarUsuario(this.idUsuario, this.usuario).subscribe(
       (res: any) => {
-        console.log(`Usuario con ID ${this.id_usuario} actualizado`);
+        console.log(`Usuario con ID ${this.idUsuario} actualizado`);
         this.router.navigate(['/listar-usuarios']);
       },
       (err: any) => {

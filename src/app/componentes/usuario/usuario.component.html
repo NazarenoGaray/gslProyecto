@@ -3,7 +3,7 @@
 <div class="card container-fluid" id="content-establecimiento">
     <div class="container">
         <div class="card-header">
-            <h2 class="h2">{{ usuario.nombre }}</h2>
+            <h2 class="h2">{{usuario.apellido}} {{usuario.nombre}}</h2>
         </div>
         <div class="row">
             <div class="col-sm col-xs-12">
@@ -11,21 +11,18 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="detail">
-                                <label class="card-subtitle mb-2 text-muted">País:</label>
-                                <span class="card-text"></span>
+                                <label class="card-subtitle mb-2 text-muted">Correo:</label>
+                                <span class="card-text">{{ usuario.correo }}</span>
                             </div>
                             <div class="detail">
-                                <label class="card-subtitle mb-2 text-muted">Provincia:</label>
-                                <span class="card-text"></span>
-                            </div>
+                                <label class="card-subtitle mb-2 text-muted">Telefono:</label>
+                                <span class="card-text">{{ usuario.telefono }}</span>
+                        </div>
                             <div class="detail">
-                                <label class="card-subtitle mb-2 text-muted">Localidad:</label>
-                                <span class="card-text"></span>
+                                <label class="card-subtitle mb-2 text-muted">Usuario:</label>
+                                <span class="card-text">{{ usuario.usuario }}</span>
                             </div>
-                            <div class="detail">
-                                <label class="card-subtitle mb-2 text-muted">Dirección:</label>
-                                <span class="card-text"></span>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="card">
@@ -37,12 +34,12 @@
                                 <span class="card-text"></span>
                             </div>
                             <div class="detail">
-                                <label class="card-subtitle mb-2 text-muted">Telefono:</label>
-                                <span class="card-text"></span>
+                                <label class="card-subtitle mb-2 text-muted">Rol:</label>
+                                <span class="card-text">{{obtenerNombreRol(usuario.idRol)}}</span>
                             </div>
                             <div class="detail">
-                                <label class="card-subtitle mb-2 text-muted">Correo:</label>
-                                <span class="card-text"></span>
+                                <label class="card-subtitle mb-2 text-muted">Estado del Usuario:</label>
+                                <span class="card-text">{{obtenerNombreEstado(usuario.idEstadoUsuario)}}</span>
                             </div>
                             
                         </div>

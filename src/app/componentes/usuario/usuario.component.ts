@@ -9,12 +9,12 @@ import { RolService } from 'src/app/servicios/usuario/roles.service';
 import { UsuarioService } from 'src/app/servicios/usuario/usuario.service';
 
 @Component({
-  selector: 'app-detalle-usuario',
-  templateUrl: './detalle-usuario.component.html',
-  styleUrls: ['./detalle-usuario.component.css']
+  selector: 'app-usuario',
+  templateUrl: './usuario.component.html',
+  styleUrls: ['./usuario.component.css']
 })
-export class DetalleUsuarioComponent implements OnInit  {
-  id_usuario!: number;
+export class UsuarioComponent implements OnInit {
+  idUsuario!: number;
   usuario!: Usuario;
   roles: Rol[] = [];
   estados: EstadoUsuaro[] = [];
@@ -27,7 +27,33 @@ export class DetalleUsuarioComponent implements OnInit  {
     private estadoService: EstadoUsuariosService,
   ) { }
   ngOnInit(): void {
-
+    this.route.params.pipe(
+      take(1),
+      switchMap(params => this.usuarioService.obtenerDetallesUsuarioPorId(params['id']))
+    ).subscribe(
+      (usuario: Usuario | null) => {
+        if (usuario) {
+          console.log("Data obtenida: ", usuario);
+          this.idUsuario = usuario.idUsuario;
+          this.usuario = usuario;
+          console.log("Data this.obtenida: ", this.usuario);
+          // Obtener el país del usuario seleccionado
+        } else {
+          console.log("Usuario no encontrado");
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.estadoService.obtenerEstadosUsuarios().subscribe(
+      (res: EstadoUsuaro[]) => {
+        this.estados = res;
+      },
+      (err: any) => {
+        console.log(`Error al obtener los estados: ${err.message}`);
+      }
+    );
     this.rolService.obtenerRoles().subscribe(
       (res: Rol[]) => {
         this.roles = res;
@@ -37,35 +63,17 @@ export class DetalleUsuarioComponent implements OnInit  {
       }
     );
 
-    this.estadoService.obtenerEstadosUsuarios().subscribe(
-      (res: EstadoUsuaro[]) => {
-        this.estados = res;
-      },
-      (err: any) => {
-        console.log(`Error al obtener los estados: ${err.message}`);
-      }
-    );
-    ////////////////////////////////////////////////////
-    this.route.params.pipe(
-      take(1),
-      switchMap(params => this.usuarioService.obtenerUsuarioPorId(params['id']))
-    ).subscribe(
-      (usuario: Usuario | null) => {
-        if (usuario) {
-          console.log("Data obtenida: ", usuario);
-          
-          this.id_usuario = usuario.id_usuario;
-          this.usuario = usuario;
-          // Obtener el país del usuario seleccionado
-          
-        } else {
-          console.log("Usuario no encontrado");
-        }
-      },
-      error => {
-        console.log(error);
-      }
-    );
-   }
 
+  }
+  ////////////////////////////////////////////////////
+  obtenerNombreRol(idRol: number): string {
+    const rol = this.roles.find((rol) => rol.idRol === idRol);
+    return rol ? rol.rol : '';
+  }
+
+  obtenerNombreEstado(idEstado: number): string {
+    const estado = this.estados.find((estado) => estado.idEstadoUsuario === idEstado);
+    //console.log("estados:",estado);
+    return estado ? estado.estado : '';
+  }
 }

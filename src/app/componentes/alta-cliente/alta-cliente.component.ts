@@ -36,7 +36,7 @@ export class AltaClienteComponent {
 
     this.clientesService.crearCliente(clienteFormulario).subscribe(
       (res: any) => {
-        console.log(`Cliente creado con ID ${res.id_cliente}`);
+        console.log(`Cliente creado con ID ${res.idCliente}`);
         this.router.navigate(['/listar-clientes']);
       },
       (err: any) => {

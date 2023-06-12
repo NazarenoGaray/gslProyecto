@@ -14,7 +14,7 @@ que se encarga de manejar la lógica de negocio de la aplicación y comunicarse 
 })
 export class ClientesService {
   // URL de la API CLIENTE
-  apiURL = 'http://localhost/GaryStorageLogistic/Clientes.php';
+  apiURL = 'http://localhost/GSLogistic/Clientes.php';
   // Lista de cliente
   cliente = [];
   // Cliente seleccionado (si lo hay)
@@ -30,15 +30,15 @@ export class ClientesService {
     return this.http.get(this.apiURL).pipe(
       map((data: any) => {
         return data.map((cliente: any) => new Cliente(
-          cliente.id_cliente,
+          cliente.idCliente,
           cliente.nombre,
         ));
       })
     );
   }
   // Función para obtener un cliente por su ID
-  getClientePorId(id_cliente: number) {
-    return this.http.get(`${this.apiURL}?id_cliente=${id_cliente}`).pipe(
+  getClientePorId(idCliente: number) {
+    return this.http.get(`${this.apiURL}?idCliente=${idCliente}`).pipe(
       take(1),
       tap((data: any) => {
         this.clienteSeleccionado = data;
@@ -52,7 +52,7 @@ export class ClientesService {
    // Función para crear un nuevo cliente
    crearCliente(cliente: Cliente) {
     return this.http.post(this.apiURL, cliente).pipe(
-      tap((data: any) => console.log(`Cliente creado con ID ${data.id_cliente}`)),
+      tap((data: any) => console.log(`Cliente creado con ID ${data.idCliente}`)),
       catchError(err => {
         console.log(`Error al crear cliente: ${err.message}`);
         return throwError(err);
@@ -61,8 +61,8 @@ export class ClientesService {
   }
 
   // Función para actualizar un clientepor su ID
-  actualizarCliente(id_cliente: number, cliente: Cliente): Observable<any> {
-    return this.http.put(`${this.apiURL}?id_cliente=${id_cliente}`, cliente).pipe(
+  actualizarCliente(idCliente: number, cliente: Cliente): Observable<any> {
+    return this.http.put(`${this.apiURL}?idCliente=${idCliente}`, cliente).pipe(
       catchError(err => {
         console.log(`Error al actualizar cliente: ${err.message}`);
         return throwError(err);
@@ -72,9 +72,9 @@ export class ClientesService {
 
 
   // Función para eliminar un cliente por su ID
-  eliminarCliente(id_cliente: number): Observable<any> {
-    return this.http.delete(`${this.apiURL}?id_cliente=${id_cliente}`).pipe(
-      tap(() => console.log(`Cliente con ID ${id_cliente} eliminado`)),
+  eliminarCliente(idCliente: number): Observable<any> {
+    return this.http.delete(`${this.apiURL}?idCliente=${idCliente}`).pipe(
+      tap(() => console.log(`Cliente con ID ${idCliente} eliminado`)),
       catchError(error => {
         console.error(error);
         return of(null);

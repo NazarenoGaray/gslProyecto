@@ -20,15 +20,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let usuario of usuarios">
-            <td>{{ usuario.id_usuario }}</td>
+            <td>{{ usuario.idUsuario }}</td>
             <td>{{ usuario.nombre }}</td>
             <td>{{ usuario.apellido }}</td>
             <td>{{ usuario.correo }}</td>
-            <td>{{ obtenerNombreRol(usuario.id_rol) }}</td>
-            <td>{{ obtenerNombreEstado(usuario.id_estado_usuario) }}</td>
+            <td>{{ obtenerNombreRol(usuario.idRol) }}</td>
+            <td>{{ obtenerNombreEstado(usuario.idEstadoUsuario) }}</td>
             <td>
-              <a [routerLink]="['/modificar-usuario', usuario.id_usuario]" class="btn btn-sm btn-primary mr-2">Editar</a>
-              <button (click)="detallesUsuario(usuario.id_usuario)" class="btn btn-sm btn-info">Detalles</button>
+              <a [routerLink]="['/modificar-usuario', usuario.idUsuario]" class="btn btn-sm btn-primary mr-2">Editar</a>
+              <button (click)="detallesUsuario(usuario.idUsuario)" class="btn btn-sm btn-info">Detalles</button>
             </td>
           </tr>
         </tbody>

@@ -35,8 +35,8 @@ export class AltaUsuariosComponent {
       correo: ['', [Validators.required, Validators.email, this.validateCorreo]],
       usuario: ['', Validators.required],
       contrasena: ['', Validators.required],
-      id_rol: ['', Validators.required],
-      id_estado_usuario: ['', Validators.required]
+      idRol: ['', Validators.required],
+      idEstadoUsuario: ['', Validators.required]
       
     });
  //////////////////////////////////////////////////////////////////////////

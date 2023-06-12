@@ -1,32 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EstadoUsuaro } from 'src/app/model/estado-usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstadoUsuariosService {
-  private apiUrl = 'http://localhost/GaryStorageLogistic/EstadosUsuarios.php';
+  private apiUrl = 'http://localhost/GSLogistic/EstadoUsuarios.php';
 
   constructor(private http: HttpClient) { }
 
-  obtenerEstadosUsuarios(): Observable<any[]> {
+  obtenerEstadosUsuarios(): Observable<EstadoUsuaro[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
 
-  obtenerEstadoUsuarioPorId(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}?id=${id}`);
+  obtenerEstadoUsuarioPorId(idEstadoUsuario: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}?idEstadoUsuario=${idEstadoUsuario}`);
   }
 
   crearEstadoUsuario(estadoUsuario: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, estadoUsuario);
   }
 
-  actualizarEstadoUsuario(id: number, estadoUsuario: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}`, estadoUsuario, { params: { id: id.toString() } });
+  actualizarEstadoUsuario(idEstadoUsuario: number, estadoUsuario: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}`, estadoUsuario, { params: { idEstadoUsuario: idEstadoUsuario.toString() } });
   }
 
-  eliminarEstadoUsuario(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}`, { params: { id: id.toString() } });
+  eliminarEstadoUsuario(idEstadoUsuario: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}`, { params: { idEstadoUsuario: idEstadoUsuario.toString() } });
   }
 }

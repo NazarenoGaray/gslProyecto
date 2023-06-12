@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { EstadoUsuaro } from 'src/app/model/estado-usuario.model';
+import { Rol } from 'src/app/model/rol.model';
+import { Usuario } from 'src/app/model/usuario.model';
 import { TokenService } from 'src/app/servicios/token/token.service';
 import { EstadoUsuariosService } from 'src/app/servicios/usuario/estado-usuarios.service';
 import { RolService } from 'src/app/servicios/usuario/roles.service';
@@ -12,9 +15,9 @@ import { UsuarioService } from 'src/app/servicios/usuario/usuario.service';
 })
 export class ListarUsuariosComponent {
 
-  usuarios: any[] = [];
-  roles: any[] = [];
-  estados: any[] = [];
+  usuarios: Usuario[] = [];
+  roles: Rol[] = [];
+  estados: EstadoUsuaro[] = [];
 
   constructor(
     private usuarioService: UsuarioService,
@@ -64,23 +67,17 @@ export class ListarUsuariosComponent {
   }
 
   obtenerNombreRol(idRol: number): string {
-    const rol = this.roles.find((rol) => rol.id_rol === idRol);
+    const rol = this.roles.find((rol) => rol.idRol === idRol);
     return rol ? rol.rol : '';
   }
 
   obtenerNombreEstado(idEstado: number): string {
-    const estado = this.estados.find((estado) => estado.id_estado_usuario === idEstado);
+    const estado = this.estados.find((estado) => estado.idEstadoUsuario === idEstado);
+    //console.log("estados:",estado);
     return estado ? estado.estado : '';
   }
 
-  detallesUsuario(id_usuario: number) {
-    this.router.navigate(['/detalle-usuario',id_usuario]);
-    // console.log(`Eliminar usuario con ID ${id_usuario}`);
-    // if (confirm('¿Está seguro de que desea eliminar este usuario?')) {
-    //   this.usuarioService.eliminarUsuario(id_usuario).subscribe(() => {
-    //     console.log(`Usuario con ID ${id_usuario} eliminado`);
-    //     this.obtenerUsuarios();
-    //   });
-    // }
+  detallesUsuario(idUsuario: number) {
+    this.router.navigate(['/usuario',idUsuario]);
   }
 }
