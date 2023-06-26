@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Rol } from 'src/app/model/rol.model';
+import { Rol } from 'src/app/clases/rol';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,8 @@ export class RolService {
     return this.http.get<Rol[]>(this.apiURL);
   }
   obtenerRolPorId(id: number): Observable<Rol> {
-    const url = `${this.apiURL}/${id}`;
+    //console.log("idRol enviado",id);
+    const url = `${this.apiURL}?idRol=${id}`;
     return this.http.get<Rol>(url);
   }
   crearRol(rol: Rol): Observable<Rol> {

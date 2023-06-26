@@ -7,10 +7,10 @@ import { TokenService } from '../servicios/token/token.service';
   providedIn: 'root'
 })
 export class TokenGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown> {
-  
+
   constructor(
-    private tokenService: TokenService
-    ){}
+    private tokenService: TokenService,
+  ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -31,3 +31,4 @@ export class TokenGuard implements CanActivate, CanActivateChild, CanDeactivate<
     return true;
   }
 }
+

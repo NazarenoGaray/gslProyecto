@@ -3,5 +3,5 @@ export class Cliente {
       public idCliente: number,
       public nombre: string, 
     ) {}
-  }
+}
   

@@ -6,7 +6,8 @@ import { catchError, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class SesionService {
-  apiUrl = 'http://localhost/GSLogistic/Sesion.php';
+  //apiUrl = 'http://localhost/GSLogistic/Sesion.php';
+  apiUrl = 'http://localhost/ApiGSL/iniciar-sesion';
 
   constructor(private http: HttpClient) { }
 
@@ -15,14 +16,20 @@ export class SesionService {
       usuario: usuario,
       contrasena: contrasena
     };
+  
     return this.http.post(this.apiUrl, body).pipe(
-      tap((data: any) => console.log(`Inicio sesión exitosa`)),
+      tap((data: any) => {
+        console.log("Inicio de sesión exitoso", data);
+        const token = data.token; // Accede al token devuelto por el servidor
+        // Almacena el token en localStorage o en el estado de la aplicación para su uso posterior
+      }),
       catchError(err => {
-        console.log(`Error al iniciar sesión`);
+        console.log("Error al iniciar sesión", err);
         return throwError(err);
       })
     );
   }
+
 }
 function throwError(err: any): any {
   throw new Error('Function not implemented.');

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EstadoUsuaro } from 'src/app/model/estado-usuario.model';
-import { Rol } from 'src/app/model/rol.model';
-import { Usuario } from 'src/app/model/usuario.model';
+import { EstadoUsuaro } from 'src/app/clases/estado-usuario.model';
+import { Rol } from 'src/app/clases/rol';
+import { Usuario } from 'src/app/clases/usuario';
 import { EstadoUsuariosService } from 'src/app/servicios/usuario/estado-usuarios.service';
 import { RolService } from 'src/app/servicios/usuario/roles.service';
 import { UsuarioService } from 'src/app/servicios/usuario/usuario.service';

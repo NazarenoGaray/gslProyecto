@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EstadoUsuaro } from 'src/app/model/estado-usuario.model';
+import { EstadoUsuaro } from 'src/app/clases/estado-usuario.model';
 
 @Injectable({
   providedIn: 'root'

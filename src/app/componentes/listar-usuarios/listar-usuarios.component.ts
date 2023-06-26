@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { EstadoUsuaro } from 'src/app/model/estado-usuario.model';
-import { Rol } from 'src/app/model/rol.model';
-import { Usuario } from 'src/app/model/usuario.model';
+import { EstadoUsuaro } from 'src/app/clases/estado-usuario.model';
+import { Rol } from 'src/app/clases/rol';
+import { Usuario } from 'src/app/clases/usuario';
 import { TokenService } from 'src/app/servicios/token/token.service';
 import { EstadoUsuariosService } from 'src/app/servicios/usuario/estado-usuarios.service';
 import { RolService } from 'src/app/servicios/usuario/roles.service';

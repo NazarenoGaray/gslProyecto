@@ -13,6 +13,7 @@ import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { TokenGuard } from './guard/token.guard';
 import { ModifUsuariosComponent } from './componentes/modif-usuarios/modif-usuarios.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { YoComponent } from './componentes/yo/yo.component';
 
 
 const routes: Routes = [
@@ -26,8 +27,9 @@ const routes: Routes = [
   { path: 'alta-cliente',component: AltaClienteComponent, canActivate:[TokenGuard]},
   { path: 'modificar-cliente',component: ModifClienteComponent, canActivate:[TokenGuard]},
   { path: 'listar-clientes',component: ListarClientesComponent, canActivate:[TokenGuard]},
-  { path: 'alta-cliente',component: AltaClienteComponent},
-  { path: 'cliente/:id',component: ClienteComponent},
+  { path: 'alta-cliente',component: AltaClienteComponent, canActivate:[TokenGuard]},
+  { path: 'cliente/:id',component: ClienteComponent, canActivate:[TokenGuard]},
+  { path: 'github-creador',component: YoComponent,},
   { path: '**',component: Error404Component},
   //{ path: '',component:},
   //{ path: '',component:},

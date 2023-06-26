@@ -20,6 +20,7 @@ import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { NosotrosComponent } from './componentes/nosotros/nosotros.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { YoComponent } from './componentes/yo/yo.component';
 
 
 
@@ -41,6 +42,7 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
     ContactoComponent,
     NosotrosComponent,
     UsuarioComponent,
+    YoComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 
 import { tap, switchMap, map, take, catchError } from 'rxjs/operators';
-import { Cliente } from 'src/app/model/cliente.model';
+import { Cliente } from 'src/app/clases/cliente';
 
 /* el archivo cliente.service.ts sería el controlador 
 que se encarga de manejar la lógica de negocio de la aplicación y comunicarse con la API.

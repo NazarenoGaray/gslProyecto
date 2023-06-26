@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, take } from 'rxjs';
-import { EstadoUsuaro } from 'src/app/model/estado-usuario.model';
-import { Rol } from 'src/app/model/rol.model';
-import { Usuario } from 'src/app/model/usuario.model';
+import { EstadoUsuaro } from 'src/app/clases/estado-usuario.model';
+import { Rol } from 'src/app/clases/rol';
+import { Usuario } from 'src/app/clases/usuario';
 import { EstadoUsuariosService } from 'src/app/servicios/usuario/estado-usuarios.service';
 import { RolService } from 'src/app/servicios/usuario/roles.service';
 import { UsuarioService } from 'src/app/servicios/usuario/usuario.service';
@@ -18,13 +18,14 @@ export class ModifUsuariosComponent {
 
   usuarioForm!: FormGroup;
   usuario!: Usuario;
+  usuarioOriginal!: Usuario;
   idUsuario!: number;
   roles: Rol[] = [];
   estados: EstadoUsuaro[] = [];
   paises: any[] = [];
   provincias: any[] = [];
   localidades: any[] = [];
-
+  hayCambios: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +37,9 @@ export class ModifUsuariosComponent {
   ) { }
 
   ngOnInit(): void {
+    
     this.usuarioForm = this.formBuilder.group({
+      idUsuario: [''],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       telefono: ['', Validators.required],
@@ -46,6 +49,7 @@ export class ModifUsuariosComponent {
       idRol: ['', Validators.required],
       idEstadoUsuario: ['', Validators.required]
     });
+    
     // Obtenemos los roles para cargarlos en el select
     this.rolService.obtenerRoles().subscribe(
       (res: Rol[]) => {
@@ -75,6 +79,9 @@ export class ModifUsuariosComponent {
           this.usuarioForm.patchValue(usuario);
           this.idUsuario = usuario.idUsuario;
           this.usuario = usuario;
+          this.usuarioOriginal = this.usuarioForm.value;
+          console.log('formularioActual:', JSON.stringify(this.usuarioForm.value));
+          console.log('usuarioOriginal:', JSON.stringify(this.usuarioOriginal));
         } else {
           console.log("Usuario no encontrado");
         }
@@ -83,7 +90,9 @@ export class ModifUsuariosComponent {
         console.log(error);
       }
     );
-
+    this.usuarioForm.valueChanges.subscribe(() => {
+      this.detectarCambios();
+    });
   }
   validateCorreo(control: AbstractControl): { [key: string]: any } | null {
     if (control.value && control.value.length < 5) {
@@ -95,9 +104,9 @@ export class ModifUsuariosComponent {
     const usuarioFormulario = this.usuarioForm.value;
     this.usuario = {
       ...usuarioFormulario,
-      idUsuario: this.idUsuario
+      usuario: this.idUsuario
     };
-    this.usuarioService.actualizarUsuario(this.idUsuario, this.usuario).subscribe(
+    this.usuarioService.actualizarUsuario(this.usuario).subscribe(
       (res: any) => {
         console.log(`Usuario con ID ${this.idUsuario} actualizado`);
         this.router.navigate(['/listar-usuarios']);
@@ -106,6 +115,18 @@ export class ModifUsuariosComponent {
         console.log(`Error al actualizar usuario: ${err.message}`);
       }
     );
+    this.detectarCambios();
+    this.hayCambios = false;
   }
-
+  detectarCambios(): void {
+    this.hayCambios = !this.sonDatosIguales();
+  }
+  sonDatosIguales(): boolean {
+    // Obtener los valores actuales del formulario
+    const formularioActual = this.usuarioForm.value;
+    //console.log('formularioActual:', JSON.stringify(this.usuarioForm.value));
+    //console.log('usuarioOriginal:', JSON.stringify(this.usuarioOriginal));
+    // Comparar los valores actuales con los valores originales
+    return JSON.stringify(formularioActual) === JSON.stringify(this.usuarioOriginal);
+  }
 }
