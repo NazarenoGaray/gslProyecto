@@ -21,6 +21,9 @@ import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { NosotrosComponent } from './componentes/nosotros/nosotros.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { YoComponent } from './componentes/yo/yo.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
+
+
 
 
 
@@ -43,6 +46,8 @@ import { YoComponent } from './componentes/yo/yo.component';
     NosotrosComponent,
     UsuarioComponent,
     YoComponent,
+    FiltroPipe,
+
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,9 @@
 <div class="card container-fluid" id="content-lista">
   <div class="container">
     <div class="card-header row">
-      <label class="h2 col-11" for=""> Lista de usuarios</label>
+      <label class="h2 col-9" for=""> Lista de usuarios</label>
+      <!-- <input type="text col-1" [(ngModel)]="filtro" (input)="filtrarUsuarios()" placeholder="Buscar usuarios"> -->
+      <input class="busqueda col-2" type="text" [(ngModel)]="busqueda">
       <a class="btn btn-secondary col-1" [routerLink]="['/']">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
@@ -27,7 +29,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of usuarios">
+          <tr *ngFor="let usuario of usuarios | filtro : busqueda is ">
             <td>{{ usuario.idUsuario }}</td>
             <td>{{ usuario.nombre }}</td>
             <td>{{ usuario.apellido }}</td>

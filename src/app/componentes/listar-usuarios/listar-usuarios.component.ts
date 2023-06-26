@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EstadoUsuaro } from 'src/app/clases/estado-usuario.model';
+import { ListaUsuario } from 'src/app/clases/lista-usuario';
 import { Rol } from 'src/app/clases/rol';
 import { Usuario } from 'src/app/clases/usuario';
 import { TokenService } from 'src/app/servicios/token/token.service';
@@ -18,6 +19,8 @@ export class ListarUsuariosComponent {
   usuarios: Usuario[] = [];
   roles: Rol[] = [];
   estados: EstadoUsuaro[] = [];
+  //filtro: string = '';
+  busqueda: string = "";
 
   constructor(
     private usuarioService: UsuarioService,
@@ -37,13 +40,24 @@ export class ListarUsuariosComponent {
     this.usuarioService.obtenerUsuarios().subscribe(
       (response) => {
         this.usuarios = Object.values(response);
+        //this.filtrarUsuarios();
       },
       (error) => {
         console.error(error);
       }
     );
   }
-
+  // filtrarUsuarios() {
+  //   if (this.filtro) {
+  //     this.usuarios = this.usuarios.filter((usuario) => {
+  //       return (
+  //         usuario.nombre.toLowerCase().includes(this.filtro.toLowerCase()) ||
+  //         usuario.apellido.toLowerCase().includes(this.filtro.toLowerCase()) ||
+  //         usuario.correo.toLowerCase().includes(this.filtro.toLowerCase())
+  //       );
+  //     });
+  //   }
+  // }
   obtenerRoles() {
     this.rolesService.obtenerRoles().subscribe(
       (roles: any[]) => {

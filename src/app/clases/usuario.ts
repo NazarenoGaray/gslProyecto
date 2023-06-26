@@ -18,7 +18,8 @@ export class Usuario {
     usuario: string,
     contrasena: string,
     idRol: number,
-    idEstadoUsuario: number
+    idEstadoUsuario: number,
+
   ) {
     this.idUsuario = idUsuario;
     this.nombre = nombre;
@@ -29,6 +30,7 @@ export class Usuario {
     this.contrasena = contrasena;
     this.idRol = idRol;
     this.idEstadoUsuario = idEstadoUsuario;
+
   }
 }
   
