@@ -22,6 +22,7 @@ import { NosotrosComponent } from './componentes/nosotros/nosotros.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { YoComponent } from './componentes/yo/yo.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { FiltroClientesPipe } from './pipes/filtro-clientes.pipe';
 
 
 
@@ -47,6 +48,7 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     UsuarioComponent,
     YoComponent,
     FiltroPipe,
+    FiltroClientesPipe,
 
   ],
   imports: [

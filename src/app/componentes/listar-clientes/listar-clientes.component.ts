@@ -11,6 +11,8 @@ import { ClientesService } from 'src/app/servicios/clientes/clientes.service';
 export class ListarClientesComponent {
 
   clientes: Cliente[] = [];
+  busqueda: string = "";
+
 
   constructor(
     private clientesService: ClientesService,
