@@ -8,7 +8,8 @@ import { Usuario } from 'src/app/clases/usuario';
 })
 export class UsuarioService {
   // URL de la API apiURL = 'http://localhost/GSLogistic/Usuarios.php';
-  apiURL = 'http://localhost/ApiGSL';
+  //apiURL = 'http://localhost/ApiGSL';
+  apiURL = 'http://localhost:3001/usuarios'
 
   // Lista de usuarios
   usuario!: Usuario;
@@ -19,20 +20,20 @@ export class UsuarioService {
 
   // Constructor del componente
   constructor(private http: HttpClient) { }
-  getDatos() {
-    return this.http.get(`${this.apiURL}/datos`);
-  }
+  // getDatos() {
+  //   return this.http.get(`${this.apiURL}/datos`);
+  // }
   // Función para obtener todos los usuarios
   obtenerUsuarios(): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.apiURL}/usuarios`);
+    return this.http.get<Usuario>(`${this.apiURL}`);
   }
 
   // Función para obtener un usuario por su ID
   obtenerUsuarioPorId(idUsuario: number) {
-    const body = {
-      idUsuario: idUsuario,
-    };
-    return this.http.post(`${this.apiURL}/usuario-id`,body).pipe(
+    // const body = {
+    //   idUsuario: idUsuario,
+    // };
+    return this.http.get(`${this.apiURL}/${idUsuario}`).pipe(
       take(1),
       tap((data: any) => {
         this.usuario = data;
@@ -44,11 +45,11 @@ export class UsuarioService {
     );
   }
   obtenerDetallesUsuarioPorId(idUsuario: number) {
-    const body = {
-      idUsuario: idUsuario,
-    };
+    // const body = {
+    //   idUsuario: idUsuario,
+    // };
     //return this.http.get(`${this.apiURL}?idUsuarioDetalle=${idUsuario}`).pipe(
-    return this.http.post(`${this.apiURL}/usuario-detalles`,body).pipe(
+    return this.http.get(`${this.apiURL}/${idUsuario}`).pipe(
       map((data: any) => {
         //console.log('Datos del usuario:', data);
         return new Usuario(
@@ -58,7 +59,7 @@ export class UsuarioService {
           data.telefono,
           data.correo,
           data.usuario,
-          data.contrasena,
+          data.contraseña,
           data.idRol,
           data.idEstadoUsuario
         );}),
@@ -79,7 +80,7 @@ export class UsuarioService {
   // Función para crear un nuevo usuario
   crearUsuario(usuario: Usuario) {
     console.log('Datos del usuario:', usuario);
-    return this.http.post(`${this.apiURL}/alta-usuario`, usuario).pipe(
+    return this.http.post(`${this.apiURL}`, usuario).pipe(
       tap((data: any) => console.log(`Usuario creado con ID ${data.idUsuario}`)),
       catchError(err => {
         console.log(`Error al crear usuario: ${err.message}`);

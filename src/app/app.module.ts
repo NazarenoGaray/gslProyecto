@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importar el módulo de formularios reactivos
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListarClientesComponent } from './componentes/listar-clientes/listar-clientes.component';
@@ -23,6 +24,14 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { YoComponent } from './componentes/yo/yo.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { FiltroClientesPipe } from './pipes/filtro-clientes.pipe';
+import { ChatComponent } from './componentes/chat/chat.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { GraficoComponent } from './componentes/grafico/grafico.component';
+
 
 
 
@@ -49,6 +58,8 @@ import { FiltroClientesPipe } from './pipes/filtro-clientes.pipe';
     YoComponent,
     FiltroPipe,
     FiltroClientesPipe,
+    ChatComponent,
+    GraficoComponent,
 
   ],
   imports: [
@@ -56,7 +67,11 @@ import { FiltroClientesPipe } from './pipes/filtro-clientes.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

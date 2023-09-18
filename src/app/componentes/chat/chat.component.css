@@ -1,0 +1,102 @@
+/* chat.component.css */
+
+.chat-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chat-history {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f7f7f7;
+  }
+  
+  .message, .message-response {
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .message::before, .message-response::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+  }
+  
+  .message::before {
+    border-width: 7px 15px 7px 0;
+    border-color: transparent #e0e0e0 transparent transparent;
+    top: 25%;
+    left: -15px;
+    transform: translateY(-50%);
+  }
+  
+  .message-response {
+    margin-bottom: 10px;
+    background-color: #d0f0d0;
+    text-align: right;
+  }
+  
+  .message-response::before {
+    border-width: 7px 0 7px 15px;
+    border-color: transparent transparent transparent #d0f0d0;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+  }
+  
+  
+  .message-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .send-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .send-button:hover {
+    background-color: #0056b3;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .usuario {
+    font-weight: bold; /* Opcional: negrita para resaltar el nombre de usuario */
+    margin-bottom: 4px; /* Espacio inferior para separar el nombre de usuario del mensaje */
+  }
+  
+  /* Estilos para la hora en todos los mensajes */
+  .hora {
+    text-align: right; /* Alinea el texto de la hora a la derecha */
+    font-size: smaller;
+    margin-top: 4px; /* Espacio superior para separar la hora del mensaje */
+  }

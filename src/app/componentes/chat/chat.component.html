@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="chat-container">
+    <ul>
+      <li *ngFor="let item of usuarios | async">
+        {{ item.nombre }} {{ item.apellido }} ({{item.usuario}})
+      </li>
+    </ul>
+  </div>
+  <div class="chat-container">
+    <div class="chat-history">
+      <li *ngFor="let men of mensaje" class="p-2" [ngClass]="{'message': !esMensajeDelUsuarioActual(men.remitente,men.destinatario), 'message-response': esMensajeDelUsuarioActual(men.remitente,men.destinatario)}">
+        <div class="usuario">
+          {{ men.usuario }}
+        </div>
+        <div>
+          {{ men.texto }}
+        </div>
+        <div class="hora">{{ men.hora }}</div>
+      </li>
+    </div>
+
+    <input class="message-input" type="text" placeholder="Escriba un mensaje..." [(ngModel)]="msj" />
+    <button class="send-button" type="button" (click)="agregar()">Send</button>
+  </div>
+</div>

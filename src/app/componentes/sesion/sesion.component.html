@@ -1,24 +1,33 @@
 <div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-  
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
-      </div>
-  
-      <!-- Login Form -->
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" [(ngModel)]="usuario" placeholder="login">
-        <input type="password" id="password" class="fadeIn third" name="contrasena" [(ngModel)]="contrasena" placeholder="password">
-        <button type="submit" class="fadeIn fourth" (click)="onSubmit()">Iniciar sesión</button>
-      </form>
-      
-  
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="/">Olvidaste la contraseña?</a>
-      </div>
-  
-    </div>
+  <div *ngIf="auth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <button (click)="logout()">Logout</button>
   </div>
+  <ng-template #showLogin>
+    <p>Please login.</p>
+    <button (click)="login()">Login with Google</button>
+  </ng-template>
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
+    </div>
+
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" [(ngModel)]="usuario" placeholder="login">
+      <input type="password" id="password" class="fadeIn third" name="contrasena" [(ngModel)]="contrasena"
+        placeholder="password">
+      <button type="submit" class="fadeIn fourth" (click)="onSubmit()">Iniciar sesión</button>
+    </form>
+    <div *ngIf="credenciales" class="alert alert-danger">Contraseña incorrecta</div>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="/">Olvidaste la contraseña?</a>
+    </div>
+
+  </div>
+</div>

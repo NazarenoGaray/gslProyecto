@@ -5,7 +5,7 @@ export class Usuario {
   telefono: string;
   correo: string;
   usuario: string;
-  contrasena: string;
+  contraseña: string;
   idRol: number;
   idEstadoUsuario: number;
 
@@ -16,7 +16,7 @@ export class Usuario {
     telefono: string,
     correo: string,
     usuario: string,
-    contrasena: string,
+    contraseña: string,
     idRol: number,
     idEstadoUsuario: number,
 
@@ -27,7 +27,7 @@ export class Usuario {
     this.telefono = telefono;
     this.correo = correo;
     this.usuario = usuario;
-    this.contrasena = contrasena;
+    this.contraseña = contraseña;
     this.idRol = idRol;
     this.idEstadoUsuario = idEstadoUsuario;
 

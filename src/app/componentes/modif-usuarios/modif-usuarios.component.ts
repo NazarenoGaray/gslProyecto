@@ -45,7 +45,7 @@ export class ModifUsuariosComponent {
       telefono: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email, this.validateCorreo]],
       usuario: ['', Validators.required],
-      contrasena: ['', Validators.required],
+      contraseña: ['', Validators.required],
       idRol: ['', Validators.required],
       idEstadoUsuario: ['', Validators.required]
     });
@@ -72,16 +72,21 @@ export class ModifUsuariosComponent {
     this.route.params.pipe(
       take(1),
       switchMap(params => this.usuarioService.obtenerUsuarioPorId(params['id']))
-    ).subscribe(
+    )
+    .subscribe(
       (usuario: Usuario | null) => {
         if (usuario) {
           console.log("Data obtenida: ", usuario);
           this.usuarioForm.patchValue(usuario);
           this.idUsuario = usuario.idUsuario;
           this.usuario = usuario;
-          this.usuarioOriginal = this.usuarioForm.value;
+          this.usuarioOriginal = usuario;
+          console.log('usuario:', usuario);
           console.log('formularioActual:', JSON.stringify(this.usuarioForm.value));
           console.log('usuarioOriginal:', JSON.stringify(this.usuarioOriginal));
+          this.usuarioForm.valueChanges.subscribe(() => {
+            this.detectarCambios();
+          });
         } else {
           console.log("Usuario no encontrado");
         }
@@ -90,9 +95,6 @@ export class ModifUsuariosComponent {
         console.log(error);
       }
     );
-    this.usuarioForm.valueChanges.subscribe(() => {
-      this.detectarCambios();
-    });
   }
   validateCorreo(control: AbstractControl): { [key: string]: any } | null {
     if (control.value && control.value.length < 5) {
@@ -101,6 +103,7 @@ export class ModifUsuariosComponent {
     return null;
   }
   actualizarUsuario() {
+    this.detectarCambios();
     const usuarioFormulario = this.usuarioForm.value;
     this.usuario = {
       ...usuarioFormulario,
@@ -115,7 +118,7 @@ export class ModifUsuariosComponent {
         console.log(`Error al actualizar usuario: ${err.message}`);
       }
     );
-    this.detectarCambios();
+    
     this.hayCambios = false;
   }
   detectarCambios(): void {
@@ -124,8 +127,9 @@ export class ModifUsuariosComponent {
   sonDatosIguales(): boolean {
     // Obtener los valores actuales del formulario
     const formularioActual = this.usuarioForm.value;
-    //console.log('formularioActual:', JSON.stringify(this.usuarioForm.value));
-    //console.log('usuarioOriginal:', JSON.stringify(this.usuarioOriginal));
+    console.log('formularioActual:', JSON.stringify(this.usuarioForm.value));
+    console.log('usuarioOriginal:', JSON.stringify(this.usuarioOriginal));
+    console.log('const formularioActual:', JSON.stringify(formularioActual));
     // Comparar los valores actuales con los valores originales
     return JSON.stringify(formularioActual) === JSON.stringify(this.usuarioOriginal);
   }

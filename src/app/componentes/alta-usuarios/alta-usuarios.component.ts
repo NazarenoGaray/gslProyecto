@@ -34,7 +34,7 @@ export class AltaUsuariosComponent {
       telefono: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email, this.validateCorreo]],
       usuario: ['', Validators.required],
-      contrasena: ['', Validators.required],
+      contraseña: ['', Validators.required],
       idRol: ['', Validators.required],
       idEstadoUsuario: ['', Validators.required]
       

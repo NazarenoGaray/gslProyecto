@@ -71,15 +71,4 @@ export class UsuarioComponent implements OnInit {
     );
   }
   
-  ////////////////////////////////////////////////////
-  // obtenerNombreRol(idRol: number): string {
-  //   const rol = this.roles.find((rol) => rol.idRol === idRol);
-  //   return rol ? rol.rol : '';
-  // }
-
-  // obtenerNombreEstado(idEstado: number): string {
-  //   const estado = this.estados.find((estado) => estado.idEstadoUsuario === idEstado);
-  //   //console.log("estados:",estado);
-  //   return estado ? estado.estado : '';
-  // }
 }
